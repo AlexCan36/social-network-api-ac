@@ -26,4 +26,5 @@ const ReactionSchema = new Schema({
     }
 });
 
-module.exports = Reaction.Schema;
+
+module.exports = ReactionSchema;
