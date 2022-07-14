@@ -50,8 +50,8 @@ const thoughtController = {
             .catch(err => res.json(err));
     },
 
-    deleteThought({ params, body }, res) {
-        Thought.findByIdAndDelete({ _id: params.thoughtId } , body, { runValidators: true, new: true })
+    deleteThought({ params }, res) {
+        Thought.findByIdAndDelete({ _id: params.thoughtId } , { runValidators: true, new: true })
             .then(thoughtData => {
                 if(!thoughtData) {
                     res.status(404).json({ message: 'No thought found with this ID' });
