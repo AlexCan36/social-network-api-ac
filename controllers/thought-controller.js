@@ -79,10 +79,8 @@ const thoughtController = {
     },
 
     deleteReaction({ params }, res){
-        Thought.findOneAndUpdate(
-            {_id: params.thoughtId},
-            {$pull: {reactions: {reactionId : params.reactionId}}},
-            { new: true, runValidators: true }
+        Thought.findOneAndDelete(
+            {_id: params.thoughtId}
         )
         .then(thoughtData => {
             if (!thoughtData) {
