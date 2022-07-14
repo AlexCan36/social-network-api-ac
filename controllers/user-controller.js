@@ -3,6 +3,10 @@ const { User } = require('../models');
 const userController = {
     getUsers(req, res) {
         User.find({})
+        .populate({
+            path: 'thoughts',
+            select: '-__v'
+          })
         .then(userData => res.json(userData))
         .catch(err => {
             console.log(err);
