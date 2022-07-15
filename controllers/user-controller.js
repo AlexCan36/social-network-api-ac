@@ -63,8 +63,17 @@ const userController = {
         })
         .catch(err => res.status(404).json(err));
     },
-    deleteFriend({params}, res) {
 
+    deleteFriend({params}, res) {
+        User.findByIdAndDelete({ _id: params.id })
+        .then(userData => {
+            if(!userData) {
+                res.status(404).json({ message: 'no friend found with id' });
+                return;
+            }
+            res.json(userData);
+        })
+        .catch(err => res.status(404).json(err));
     }
 
 }
